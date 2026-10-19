@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import API from '../service/API';
 
 const EditStudent = () => {
 
@@ -17,7 +18,8 @@ const EditStudent = () => {
 
     async function fetchData() {
         try {
-            let response = await axios.get(`http://localhost:3000/students/${id}`)
+            // let response = await axios.get(`http://localhost:3000/students/${id}`)
+            let response = await API.get(`/students/${id}`)
             console.log(response.data);
             setStudent(response.data);
         } catch (error) {
@@ -28,7 +30,8 @@ const EditStudent = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:3000/students/${id}`,student);
+            // await axios.put(`http://localhost:3000/students/${id}`,student);
+            await API.put(`/students/${id}`,student);
             alert("Student have Updated Successfully")
             navigate("/show")
             

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import API from '../service/API';
 
 const AddStudents = () => {
 
@@ -19,7 +20,8 @@ const AddStudents = () => {
     e.preventDefault();
 
     try {
-        await axios.post("http://localhost:3000/students",student)
+        // await axios.post("http://localhost:3000/students",student)
+        await API.post("/students",student)
         alert("Student successfully Added!!!!!")
         navigate('/show')
     } catch (error) {

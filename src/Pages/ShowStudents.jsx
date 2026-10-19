@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import API from '../service/API';
 
 function ShowStudents() {
 
@@ -8,7 +9,8 @@ function ShowStudents() {
 
     async function fetchData() {
         try {
-            let response = await axios.get("http://localhost:3000/students")
+            // let response = await axios.get("http://localhost:3000/students")
+            let response = await API.get("/students")
             console.log(response.data);
             setStudents(response.data);
         } catch (error) {
@@ -19,7 +21,8 @@ function ShowStudents() {
     async function handlePatch(id) {
         
         try {
-            await axios.patch(`http://localhost:3000/students/${id}`,
+            // await axios.patch(`http://localhost:3000/students/${id}`,
+            await API.patch(`/students/${id}`,
                {course: "Course Update"}
             )
             alert("Course Updated Succesffully")
@@ -38,7 +41,8 @@ function ShowStudents() {
             let confirmMsg = confirm("Are You Sure ? ")
 
             if(confirmMsg){
-               await axios.delete(`http://localhost:3000/students/${id}`,
+            //    await axios.delete(`http://localhost:3000/students/${id}`,
+            await API.delete(`/students/${id}`,
                {course: "Course Update"}
             )
             alert("Course Deleted Succesffully")
