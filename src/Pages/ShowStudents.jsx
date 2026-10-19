@@ -62,6 +62,7 @@ function ShowStudents() {
             <h1>Student Data</h1>
             <div className="row justify-content-evenly">
                  {
+                    students.length>0 ?
                      students.map((student)=>(
                          <div className="card col-12 col-md-6 col-xl-3 p-5 text-center text-bg-dark">
                     <div className="card-body">
@@ -78,6 +79,8 @@ function ShowStudents() {
                     </div>
                 </div>
                      ))
+                     :
+                     (<h1>Student Data Not Found</h1>)
                  }
             </div>
         </div>
